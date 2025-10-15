@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "@/utils";
-import type { BaseLayoutProps } from "./type";
+import type { BaseLayoutProps } from "./types";
 
 export function Base({
     className,
