@@ -1,1 +1,2 @@
-export * from "./Styles";
+export * from "./store";
+export * from "./provider";
