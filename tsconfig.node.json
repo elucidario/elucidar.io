@@ -9,6 +9,7 @@
         "types": [
             "node"
         ],
+        "jsx": "react-jsx",
         "skipLibCheck": true,
         /* Bundler mode */
         "moduleResolution": "bundler",
@@ -18,6 +19,7 @@
         "noEmit": true,
         /* Linting */
         "strict": true,
+        "strictNullChecks": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "erasableSyntaxOnly": true,
