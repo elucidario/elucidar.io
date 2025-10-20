@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const pattern = cva(["bg-fixed", "max-lg:hidden"], {
+export const pattern = cva(["bg-fixed"], {
     variants: {
         pattern: {
             linear: [
