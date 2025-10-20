@@ -20,14 +20,16 @@ export function Line({
                 xLineVariants({
                     top,
                     bottom,
-                })
+                }),
+                "md:px-4"
             )}
             {...props}
         >
             <div
                 className={cn(
                     "line-content",
-                    "w-260",
+                    "w-sm md:w-full lg:w-260",
+                    "min-h-fit",
                     "m-auto",
                     "flex",
                     yLineVariants({
