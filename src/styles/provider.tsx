@@ -1,7 +1,6 @@
 import { useEffect, type PropsWithChildren } from "react";
 import { useUiActions, useUiTheme } from "./store";
-import { Base } from "@/layouts";
-import "./style.css";
+import { cn } from "@/utils";
 
 export function UI(props: PropsWithChildren) {
     const theme = useUiTheme();
@@ -25,5 +24,25 @@ export function UI(props: PropsWithChildren) {
         });
     }, [setTheme]);
 
-    return <Base theme={theme}>{props.children}</Base>;
+    return (
+        <div
+            className={cn(
+                theme,
+                "min-h-screen",
+                "overflow-x-auto",
+                "relative",
+                "box-border",
+                "bg-light",
+                "dark:bg-dark",
+                "text-dark",
+                "dark:text-light",
+                "font-sans",
+                "transition-colors",
+                "duration-300"
+            )}
+            data-theme={theme}
+        >
+            {props.children}
+        </div>
+    );
 }

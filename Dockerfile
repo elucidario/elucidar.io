@@ -11,5 +11,6 @@ COPY . ./
 RUN pnpm install
 
 EXPOSE 4000
+EXPOSE 4001
 
 CMD ["pnpm", "install"]

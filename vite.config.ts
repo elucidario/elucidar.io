@@ -1,9 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import svgr from "vite-plugin-svgr";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import dotenv from "dotenv";
+
+dotenv.config({ path: [`.env.${process.env.NODE_ENV}`] });
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -17,17 +21,17 @@ export default defineConfig({
         port: 4001,
     },
     plugins: [
+        ...(process.env.NODE_ENV !== "development"
+            ? [cloudflare({ viteEnvironment: { name: "ssr" } })]
+            : []),
+        tsconfigPaths(),
+        tanstackStart(),
         tailwindcss(),
-        tanstackRouter({
-            target: "react",
-            autoCodeSplitting: true,
-        }),
         svgr(),
         react({
             babel: {
                 plugins: [["babel-plugin-react-compiler"]],
             },
         }),
-        tsconfigPaths(),
     ],
 });
