@@ -25,7 +25,9 @@ export default defineConfig({
             ? [cloudflare({ viteEnvironment: { name: "ssr" } })]
             : []),
         tsconfigPaths(),
-        tanstackStart(),
+        tanstackStart({
+            srcDirectory: "src",
+        }),
         tailwindcss(),
         svgr(),
         react({
