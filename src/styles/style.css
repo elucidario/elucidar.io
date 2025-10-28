@@ -2,4 +2,6 @@
 
 @import "tailwindcss";
 
+@custom-variant data-active (&[data-status~="active"]);
+
 @import "./variables.css";

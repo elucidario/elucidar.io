@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 
-export const xLineVariants = cva(["border-gray-55/25"], {
+export const xLineVariants = cva(["border-gray-45/25 dark:border-gray-65/25"], {
     variants: {
         top: {
             true: ["border-t"],
@@ -17,7 +17,7 @@ export const xLineVariants = cva(["border-gray-55/25"], {
     },
 });
 
-export const yLineVariants = cva(["border-gray-55/25"], {
+export const yLineVariants = cva(["border-gray-45/25 dark:border-gray-65/25"], {
     variants: {
         left: {
             true: ["border-l"],
