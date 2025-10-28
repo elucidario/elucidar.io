@@ -20,8 +20,7 @@ export function Line({
                 xLineVariants({
                     top,
                     bottom,
-                }),
-                "md:px-4"
+                })
             )}
             {...props}
         >
