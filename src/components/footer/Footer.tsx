@@ -9,11 +9,10 @@ export function Footer({
     ...props
 }: FooterProps & HTMLMotionProps<"footer">) {
     return (
-        <motion.footer ref={ref} className="relative h-50" {...props}>
+        <motion.footer ref={ref} className="relative h-90" {...props}>
             <div
                 className={cn(
                     "absolute",
-                    // "-z-10",
                     "w-full",
                     "h-full",
                     "opacity-40",
@@ -31,7 +30,7 @@ export function Footer({
                     })
                 )}
             ></div>
-            <Spacing className="h-50" />
+            <Spacing className="h-90" />
         </motion.footer>
     );
 }
