@@ -28,9 +28,8 @@ export function UI(props: PropsWithChildren) {
         <div
             className={cn(
                 theme,
+                "scroll-smooth",
                 "min-h-screen",
-                "overflow-x-auto",
-                "relative",
                 "box-border",
                 "bg-light",
                 "dark:bg-dark",

@@ -8,7 +8,7 @@ export function Base({
     ...props
 }: HTMLAttributes<HTMLDivElement> & BaseLayoutProps) {
     return (
-        <div className={cn(className, "scroll-smooth")} {...props}>
+        <div className={cn(className)} {...props}>
             {children}
         </div>
     );
