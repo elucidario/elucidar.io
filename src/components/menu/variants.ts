@@ -3,7 +3,8 @@ import { cva } from "class-variance-authority";
 export const menuItemVariants = cva(
     [
         "relative",
-        "text-2xl",
+        "text-md",
+        "font-mono",
         "font-semibold",
         "transition-colors",
         "duration-100",
