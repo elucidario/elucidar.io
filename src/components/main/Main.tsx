@@ -4,7 +4,7 @@ import { cn } from "@/utils/utils";
 
 export function Main({ className, children, metadata, ...props }: MainProps) {
     return (
-        <main className={cn("relative", className)} {...props}>
+        <main className={cn("flex", "flex-col", className)} {...props}>
             {metadata && <JsonLD data={metadata} />}
             {children}
         </main>
