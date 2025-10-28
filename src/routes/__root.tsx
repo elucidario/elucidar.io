@@ -6,7 +6,8 @@ import {
     Scripts,
     createRootRoute,
 } from "@tanstack/react-router";
-import "@/styles/style.css";
+import css from "@/styles/style.css?url";
+
 import { UI } from "@/styles";
 
 function RootComponent() {
@@ -75,7 +76,10 @@ export const Route = createRootRoute({
             },
             { title: "elucidar.io" },
         ],
-        links: [{ rel: "icon", href: "/logo-elucidar.io.png" }],
+        links: [
+            { rel: "stylesheet", href: css },
+            { rel: "icon", href: "/logo-elucidar.io.png" },
+        ],
     }),
     component: RootComponent,
     notFoundComponent: NotFoundComponent,

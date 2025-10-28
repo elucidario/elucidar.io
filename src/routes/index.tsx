@@ -14,7 +14,6 @@ import {
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Contact } from "@/features";
-import { Base } from "@/layouts";
 import { cn } from "@/utils";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -24,7 +23,8 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
     return (
-        <Base>
+        <>
+            <Header />
             <Main
                 metadata={{
                     "@context": "https://schema.org",
@@ -34,13 +34,15 @@ function RouteComponent() {
                     logo: "https://elucidar.io/logo-elucidar.io.png",
                     description:
                         "Serviços e produtos tecnológicos para cultura, educação e informação.",
-                    // sameAs: [
-                    //     "https://www.linkedin.com/company/elucidar",
-                    //     "https://twitter.com/elucidar_tech",
-                    // ],
                 }}
             >
-                <Header className="sticky" />
+                <Spacing />
+                <Line>
+                    <Heading className={cn("font-mono", "text-pink-55")}>
+                        Serviços e produtos tecnológicos para <br /> cultura,
+                        educação e informação.
+                    </Heading>
+                </Line>
                 <Spacing className="h-16" />
                 <Section id="servicos">
                     <Line>
@@ -168,6 +170,6 @@ function RouteComponent() {
                 </Section>
             </Main>
             <Footer />
-        </Base>
+        </>
     );
 }
