@@ -1,4 +1,8 @@
+import type { VariantProps } from "class-variance-authority";
 import type { HTMLMotionProps } from "motion/react";
+import type { paragraphVariants } from "./variants";
+import type React from "react";
+import type { HTMLAttributes } from "react";
 
 export type LinkType = {
     href: string;
@@ -6,23 +10,23 @@ export type LinkType = {
     target?: React.HTMLAttributeAnchorTarget;
 };
 
-export type LinkProps = React.PropsWithChildren<
-    React.AnchorHTMLAttributes<HTMLAnchorElement> &
-        LinkType & {
-            active?: boolean;
-            external?: boolean;
-        }
->;
+export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
+    LinkType & {
+        active?: boolean;
+        external?: boolean;
+    };
 
-export type HeadingProps = React.PropsWithChildren<
-    React.HTMLAttributes<HTMLHeadingElement> &
-        HTMLMotionProps<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">
->;
+export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
+    HTMLMotionProps<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">;
 
-export type LeadProps = React.PropsWithChildren<
-    React.HTMLAttributes<HTMLParagraphElement> & React.AriaAttributes
->;
+export type LeadProps = React.HTMLAttributes<HTMLParagraphElement> &
+    React.AriaAttributes;
 
-export type TextProps = React.HTMLAttributes<HTMLParagraphElement> & {
-    ref?: React.Ref<HTMLParagraphElement>;
-};
+export type TextProps<
+    Attributes extends HTMLAttributes<
+        HTMLParagraphElement | HTMLSpanElement | HTMLElement
+    >
+> = Attributes &
+    VariantProps<typeof paragraphVariants> & {
+        element?: "p" | "span" | "small";
+    };
