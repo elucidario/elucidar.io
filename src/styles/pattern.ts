@@ -279,4 +279,10 @@ export const pattern = cva(["bg-fixed"], {
             ],
         },
     ],
+    defaultVariants: {
+        pattern: "dots",
+        patternColor: "gray",
+        patternLight: "i",
+        patternSize: "md",
+    },
 });
