@@ -9,7 +9,10 @@ export function Section<T extends Record<string, unknown>>({
     ...props
 }: SectionProps<T>) {
     return (
-        <section className={cn(className, "scroll-mt-40")} {...props}>
+        <section
+            className={cn(className, "scroll-mt-34 md:scroll-mt-40")}
+            {...props}
+        >
             {metadata && <JsonLD<T> data={metadata} />}
             {children}
         </section>
