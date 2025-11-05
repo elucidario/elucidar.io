@@ -1,5 +1,3 @@
-import type { HTMLMotionProps } from "motion/react";
-
-export type HeaderProps = React.PropsWithChildren<
-    React.HTMLAttributes<HTMLDivElement> & HTMLMotionProps<"div">
->;
+export type HeaderProps = React.HTMLAttributes<HTMLDivElement> & {
+    menu: React.ReactNode;
+};
