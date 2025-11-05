@@ -1,59 +1,95 @@
 import { cva } from "class-variance-authority";
 
-export const menuItemVariants = cva(
+export const menuItemLinkVariants = cva(
     [
         "relative",
         "text-md",
         "font-mono",
-        "font-semibold",
         "transition-colors",
         "duration-100",
+
+        "h-full",
+        "w-full",
+        "flex",
+        "justify-center",
+
+        // "rounded-t-md",
+        "rounded-t-[5px]",
+        "rounded-t-sm",
+        // "rounded-tr-none",
+        "group-last:border-r",
+        "data-active:border-r",
+
+        "hover:font-semibold",
+
+        "data-active:font-bold",
+        "data-active:z-10",
     ],
     {
         variants: {
             color: {
                 pink: [
-                    "text-pink-45",
-                    "dark:text-pink-65",
+                    "text-pink-15 hover:text-pink-35 dark:text-pink-65 dark:hover:text-pink-85",
 
-                    "hover:text-pink-35",
-                    "dark:hover:text-pink-85",
+                    "bg-pink-95/75 dark:bg-pink-15/75 hover:bg-pink-85 dark:hover:bg-pink-35",
 
-                    "hover:bg-pink-05 dark:hover:bg-pink-35",
+                    "border-pink-45/75 dark:border-pink-65/75",
 
-                    "data-active:bg-pink-05 data-active:dark:bg-pink-25",
-                    "data-active:rounded-t-md",
+                    "data-active:bg-pink-85 data-active:dark:bg-pink-25",
                     "data-active:text-pink-15",
                     "data-active:dark:text-pink-85",
                 ],
                 blue: [
-                    "text-blue-35",
-                    "dark:text-blue-65",
+                    "text-blue-15 dark:text-blue-65 hover:text-blue-25 dark:hover:text-blue-75",
 
-                    "hover:text-blue-25",
-                    "dark:hover:text-blue-75",
+                    "bg-blue-95/75 dark:bg-blue-15/75 hover:bg-blue-85 dark:hover:bg-blue-35",
 
-                    "hover:bg-blue-05 dark:hover:bg-blue-35",
+                    "border-blue-45/75 dark:border-blue-65/75",
 
-                    "data-active:bg-blue-05 data-active:dark:bg-blue-25",
-                    "data-active:rounded-t-md",
+                    "data-active:bg-blue-85 data-active:dark:bg-blue-25",
                     "data-active:text-blue-15",
                     "data-active:dark:text-blue-85",
                 ],
                 gray: [
-                    "text-gray-35",
-                    "dark:text-gray-85",
+                    "text-gray-15 dark:text-gray-85 hover:text-gray-25 dark:hover:text-gray-95",
 
-                    "hover:text-gray-25",
-                    "dark:hover:text-gray-95",
+                    "bg-gray-95/75 dark:bg-gray-15/75 hover:bg-gray-85 dark:hover:bg-gray-35",
 
-                    "hover:bg-gray-05 dark:hover:bg-gray-35",
+                    "border-gray-45/75 dark:border-gray-65/75",
 
-                    "data-active:bg-gray-05 data-active:dark:bg-gray-25",
-                    "data-active:rounded-t-md",
+                    "data-active:bg-gray-85 data-active:dark:bg-gray-25",
                     "data-active:text-gray-15",
                     "data-active:dark:text-gray-85",
                 ],
+            },
+        },
+        defaultVariants: {
+            color: "gray",
+        },
+    }
+);
+
+export const menuItemVariants = cva(
+    [
+        "group:[data-active]:bg-pink-95",
+        "w-full md:w-fit",
+        "px-2 md:px-8",
+        "flex",
+        "justify-center",
+
+        "shadow-sm",
+        "border",
+        "border-r-0",
+        // "rounded-t-[5px]",
+        "rounded-t-sm",
+        // "rounded-tr-none",
+    ],
+    {
+        variants: {
+            color: {
+                pink: ["border-pink-45/75 dark:border-pink-65/75"],
+                blue: ["border-blue-45/75 dark:border-blue-65/75"],
+                gray: ["border-gray-45/75 dark:border-gray-65/75"],
             },
         },
         defaultVariants: {

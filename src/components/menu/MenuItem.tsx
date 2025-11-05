@@ -1,82 +1,42 @@
 import { cn } from "@/utils";
-import { type VariantProps } from "class-variance-authority";
-import type { AnchorHTMLAttributes } from "react";
 
 import { ClientOnly, Link } from "@tanstack/react-router";
-import { menuItemVariants } from "./variants";
+import { menuItemLinkVariants, menuItemVariants } from "./variants";
+import type { MenuItemProps } from "./types";
 
-export type MenuItemProps = AnchorHTMLAttributes<HTMLAnchorElement> &
-    VariantProps<typeof menuItemVariants>;
-
-export function MenuItem({
-    color,
-    href,
-    children,
-    className,
-    ...props
-}: MenuItemProps) {
+export function MenuItem({ color, label, options }: MenuItemProps) {
     return (
-        <li
-            className={cn(
-                "-ml-2",
-                "border",
-                "border-b-0",
-                "border-l-0",
-                "first:border-l",
-
-                "rounded-tr-md",
-                "first:rounded-t-md",
-                "hover:z-10 hover:rounded-t-md",
-
-                "overflow-hidden",
-
-                "border-gray-45/25 dark:border-gray-65/25"
-            )}
-        >
+        <li className={cn("-ml-2", "w-full md:w-fit", "group")}>
             <ClientOnly
                 fallback={
                     <a
-                        href={href}
+                        href={options.to + (options.hash ?? "")}
                         className={cn(
-                            menuItemVariants({
+                            menuItemLinkVariants({
                                 color,
-                                className: [
-                                    className,
-                                    "h-full",
-                                    "w-full",
-                                    "flex",
-                                    "px-8",
-                                ],
                             })
                         )}
-                        {...props}
                     >
-                        {children}
+                        <span className={cn(menuItemVariants({ color }))}>
+                            {label}
+                        </span>
                     </a>
                 }
             >
                 <Link
-                    to={"/"}
-                    hash={href}
+                    {...options}
                     activeOptions={{
-                        exact: true,
                         includeHash: true,
                     }}
                     className={cn(
-                        menuItemVariants({
+                        menuItemLinkVariants({
                             color,
-                            className: [
-                                className,
-                                "h-full",
-                                "w-full",
-                                "flex",
-                                "px-8",
-                            ],
                         })
                     )}
-                    {...props}
                 >
-                    {children}
+                    <span className={cn(menuItemVariants({ color }))}>
+                        {label}
+                    </span>
                 </Link>
             </ClientOnly>
         </li>
