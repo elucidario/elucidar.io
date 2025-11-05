@@ -16,7 +16,7 @@ export function Logo({ name, className, ...props }: LogoProps) {
                         "dark:fill-light",
                         "transition-colors",
                         "duration-300",
-                        "w-fit",
+                        "w-full",
                         "h-fit"
                     )}
                 />
@@ -27,7 +27,7 @@ export function Logo({ name, className, ...props }: LogoProps) {
                         "dark:fill-light",
                         "transition-colors",
                         "duration-300",
-                        "w-fit",
+                        "w-full",
                         "h-fit"
                     )}
                 />
