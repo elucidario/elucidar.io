@@ -17,10 +17,10 @@ import { Contact } from "@/features";
 import { cn } from "@/utils";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import Capa from "../../public/capa.svg?react";
-import Informacao from "../../public/informacao.svg?react";
-import Web from "../../public/web.svg?react";
-import Educacao from "../../public/educacao.svg?react";
+import Capa from "@/assets/capa.svg?react";
+import Informacao from "@/assets/informacao.svg?react";
+import Web from "@/assets/web.svg?react";
+import Educacao from "@/assets/educacao.svg?react";
 
 export const Route = createFileRoute("/_base/")({
     component: RouteComponent,
@@ -40,10 +40,7 @@ function RouteComponent() {
             }}
         >
             <GridLine top={false}>
-                <Cell
-                    className="col-start-1 col-span-4 flex flex-col justify-center gap-8"
-                    right={false}
-                >
+                <Cell className="col-start-1 col-span-4 flex flex-col justify-center gap-8 md:border-r-0">
                     <Heading mono color="pink" noMargin>
                         Serviços e produtos tecnológicos para <br /> cultura,
                         educação e informação.
@@ -56,15 +53,11 @@ function RouteComponent() {
                         Contato
                     </Link>
                 </Cell>
-                <Cell
-                    className="col-start-5 col-end-13 p-4"
-                    left={false}
-                    bottom={true}
-                >
-                    <Capa className="stroke-pink-45 dark:stroke-pink-65 fill-pink-45 dark:fill-pink-65" />
+                <Cell className="col-start-5 col-end-13 p-4 order-first md:order-last md:border-l-0">
+                    <Capa className="w-full stroke-pink-45 dark:stroke-pink-65 fill-pink-45 dark:fill-pink-65" />
                 </Cell>
             </GridLine>
-            <Spacing className="h-16" />
+            <Spacing className="md:h-10" />
             <Section id="servicos">
                 <Line>
                     <Heading level={3} noMargin color="pink">
@@ -160,17 +153,20 @@ function RouteComponent() {
                     />
                 </Line>
             </Section>
-            <Spacing className="h-16" />
+            <Spacing className="md:h-10" />
             <Section id="produtos">
                 <Line>
                     <Heading level={3} noMargin color="blue">
                         produtos
                     </Heading>
                 </Line>
-                <Line top={false} className={cn("flex", "flex-col", "gap-4")}>
+                <Line
+                    top={false}
+                    className={cn("w-fit", "flex", "flex-col", "gap-4")}
+                >
                     <Logo
                         name="elucidario.art"
-                        className={cn("h-fit", "w-120", "self-start")}
+                        className={cn("max-w-90", "self-start")}
                     />
                     <Heading level={4} className={cn("font-mono")}>
                         Sistema de Gestão de Coleções em ativo desenvolvimento.
@@ -183,7 +179,7 @@ function RouteComponent() {
                     </Link>
                 </Line>
             </Section>
-            <Spacing className="h-16" />
+            <Spacing className="md:h-10" />
             <Section id="contato">
                 <Line>
                     <Heading level={3} noMargin color="gray">
