@@ -16,7 +16,6 @@ export function GridLine({
             bottom={bottom}
             pattern={pattern}
             className={cn("grid-line")}
-            {...props}
         >
             <div
                 className={cn(
