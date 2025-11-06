@@ -15,13 +15,13 @@ export function GridLine({
             top={top}
             bottom={bottom}
             pattern={pattern}
-            className={cn("grid-line", className)}
+            className={cn("grid-line")}
             {...props}
         >
             <div
                 className={cn(
                     "flex flex-col md:grid md:grid-cols-12",
-                    "md:gap-4",
+                    "md:gap-x-4",
                     "px-4 md:px-0",
                     "max-w-260 w-full",
                     "mx-auto",

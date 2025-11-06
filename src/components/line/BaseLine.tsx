@@ -19,7 +19,6 @@ export function BaseLine({
         {
             className: cn(
                 "base-line",
-                "grid grid-cols-subgrid",
                 xLineVariants({
                     top,
                     bottom,
