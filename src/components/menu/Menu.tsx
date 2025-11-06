@@ -7,7 +7,7 @@ export function Menu({ links }: MenuProps) {
     return (
         <>
             <Spacing />
-            <Line element="nav" className={cn("")}>
+            <Line element="nav">
                 <ul
                     className={cn(
                         "flex",
