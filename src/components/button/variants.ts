@@ -12,6 +12,7 @@ export const buttonVariants = cva(
 
         "transition-colors",
         "duration-300",
+        "no-underline",
 
         "ring-offset-pink-55",
         "focus-visible:outline-none",
