@@ -13,10 +13,7 @@ export const menuItemLinkVariants = cva(
         "flex",
         "justify-center",
 
-        // "rounded-t-md",
-        "rounded-t-[5px]",
         "rounded-t-sm",
-        // "rounded-tr-none",
         "group-last:border-r",
         "data-active:border-r",
 
@@ -71,7 +68,6 @@ export const menuItemLinkVariants = cva(
 
 export const menuItemVariants = cva(
     [
-        "group:[data-active]:bg-pink-95",
         "w-full md:w-fit",
         "px-2 md:px-8",
         "flex",
@@ -80,16 +76,23 @@ export const menuItemVariants = cva(
         "shadow-sm",
         "border",
         "border-r-0",
-        // "rounded-t-[5px]",
         "rounded-t-sm",
-        // "rounded-tr-none",
     ],
     {
         variants: {
             color: {
-                pink: ["border-pink-45/75 dark:border-pink-65/75"],
-                blue: ["border-blue-45/75 dark:border-blue-65/75"],
-                gray: ["border-gray-45/75 dark:border-gray-65/75"],
+                pink: [
+                    "border-pink-45/75 dark:border-pink-65/75",
+                    "group:[data-active]:bg-pink-95",
+                ],
+                blue: [
+                    "border-blue-45/75 dark:border-blue-65/75",
+                    "group:[data-active]:bg-blue-95",
+                ],
+                gray: [
+                    "border-gray-45/75 dark:border-gray-65/75",
+                    "group:[data-active]:bg-gray-95",
+                ],
             },
         },
         defaultVariants: {
