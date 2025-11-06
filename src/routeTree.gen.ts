@@ -8,45 +8,95 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as BaseRouteImport } from './routes/_base'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BaseIndexRouteImport } from './routes/_base.index'
+import { Route as BlogBlogRouteImport } from './routes/blog/_blog'
+import { Route as BlogBlogSlugRouteImport } from './routes/blog/_blog.$slug'
 
+const BlogRouteImport = createFileRoute('/blog')()
+
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BaseRoute = BaseRouteImport.update({
   id: '/_base',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
 } as any)
 const BaseIndexRoute = BaseIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => BaseRoute,
 } as any)
+const BlogBlogRoute = BlogBlogRouteImport.update({
+  id: '/_blog',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogBlogSlugRoute = BlogBlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogBlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/blog': typeof BlogBlogRouteWithChildren
   '/': typeof BaseIndexRoute
+  '/blog/': typeof BlogIndexRoute
+  '/blog/$slug': typeof BlogBlogSlugRoute
 }
 export interface FileRoutesByTo {
+  '/blog': typeof BlogIndexRoute
   '/': typeof BaseIndexRoute
+  '/blog/$slug': typeof BlogBlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_base': typeof BaseRouteWithChildren
+  '/blog': typeof BlogRouteWithChildren
+  '/blog/_blog': typeof BlogBlogRouteWithChildren
   '/_base/': typeof BaseIndexRoute
+  '/blog/': typeof BlogIndexRoute
+  '/blog/_blog/$slug': typeof BlogBlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/blog' | '/' | '/blog/' | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_base' | '/_base/'
+  to: '/blog' | '/' | '/blog/$slug'
+  id:
+    | '__root__'
+    | '/_base'
+    | '/blog'
+    | '/blog/_blog'
+    | '/_base/'
+    | '/blog/'
+    | '/blog/_blog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   BaseRoute: typeof BaseRouteWithChildren
+  BlogRoute: typeof BlogRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_base': {
       id: '/_base'
       path: ''
@@ -54,12 +104,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/_base/': {
       id: '/_base/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof BaseIndexRouteImport
       parentRoute: typeof BaseRoute
+    }
+    '/blog/_blog': {
+      id: '/blog/_blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogBlogRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/_blog/$slug': {
+      id: '/blog/_blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogBlogSlugRouteImport
+      parentRoute: typeof BlogBlogRoute
     }
   }
 }
@@ -74,8 +145,33 @@ const BaseRouteChildren: BaseRouteChildren = {
 
 const BaseRouteWithChildren = BaseRoute._addFileChildren(BaseRouteChildren)
 
+interface BlogBlogRouteChildren {
+  BlogBlogSlugRoute: typeof BlogBlogSlugRoute
+}
+
+const BlogBlogRouteChildren: BlogBlogRouteChildren = {
+  BlogBlogSlugRoute: BlogBlogSlugRoute,
+}
+
+const BlogBlogRouteWithChildren = BlogBlogRoute._addFileChildren(
+  BlogBlogRouteChildren,
+)
+
+interface BlogRouteChildren {
+  BlogBlogRoute: typeof BlogBlogRouteWithChildren
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogBlogRoute: BlogBlogRouteWithChildren,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   BaseRoute: BaseRouteWithChildren,
+  BlogRoute: BlogRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
