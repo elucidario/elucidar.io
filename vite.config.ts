@@ -7,6 +7,8 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import dotenv from "dotenv";
 
+import contentCollections from "@content-collections/vite";
+
 dotenv.config({ path: [`.env.${process.env.NODE_ENV}`] });
 
 // https://vite.dev/config/
@@ -25,6 +27,7 @@ export default defineConfig({
             ? [cloudflare({ viteEnvironment: { name: "ssr" } })]
             : []),
         tsconfigPaths(),
+        contentCollections(),
         tanstackStart({
             srcDirectory: "src",
         }),

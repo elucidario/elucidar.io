@@ -15,6 +15,7 @@
         ],
         "skipLibCheck": true,
         /* Bundler mode */
+        "allowJs": true,
         "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
         "verbatimModuleSyntax": true,
@@ -31,8 +32,11 @@
         "paths": {
             "@/*": [
                 "./src/*"
+            ],
+            "content-collections": [
+                "./.content-collections/generated"
             ]
-        }
+        },
     },
     "include": [
         "src"
