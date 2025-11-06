@@ -16,6 +16,8 @@ export function Line<Attributes extends HTMLAttributes<any>>({
     return (
         <BaseLine top={top} bottom={bottom} className="px-4" {...props}>
             <Cell
+                right={right}
+                left={left}
                 className={cn(
                     "line-content",
                     "w-full lg:w-260",
