@@ -26,13 +26,13 @@ const links: MenuProps["links"] = [
             hash: "contato",
         }),
     },
-    // {
-    //     label: "blog",
-    //     color: "gray",
-    //     options: linkOptions({
-    //         to: "/blog",
-    //     }),
-    // },
+    {
+        label: "blog",
+        color: "gray",
+        options: linkOptions({
+            to: "/blog",
+        }),
+    },
 ];
 
 export function PrimaryMenu() {
