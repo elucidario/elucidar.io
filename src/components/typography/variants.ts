@@ -24,8 +24,8 @@ export const headingVariants = cva(["heading", "font-semibold", "text-wrap"], {
             false: ["mb-4"],
         },
         display: {
-            true: [],
-            false: [],
+            true: "",
+            false: "",
         },
     },
     compoundVariants: [
