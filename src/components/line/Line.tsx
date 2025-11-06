@@ -4,7 +4,7 @@ import { BaseLine } from "./BaseLine";
 import { Cell } from "./Cell";
 import type { HTMLAttributes } from "react";
 
-export function Line<Attributes extends HTMLAttributes<any>>({
+export function Line<Attributes extends HTMLAttributes<HTMLElement>>({
     right,
     left,
     top,

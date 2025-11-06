@@ -3,7 +3,7 @@ import { cn } from "@/utils";
 import type { CellProps } from "./types";
 import { yLineVariants } from "./variants";
 
-export function Cell<Attributes extends HTMLAttributes<any>>({
+export function Cell<Attributes extends HTMLAttributes<HTMLElement>>({
     children,
     className,
     left,

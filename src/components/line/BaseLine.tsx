@@ -13,7 +13,7 @@ export function BaseLine({
     bottom,
     pattern,
     ...props
-}: BaseLineProps<HTMLAttributes<any>>) {
+}: BaseLineProps<HTMLAttributes<HTMLElement>>) {
     return createElement(
         element || "div",
         {
