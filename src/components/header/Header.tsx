@@ -1,9 +1,10 @@
 import type { HeaderProps } from "./types";
 import { cn } from "@/utils";
-import { Logo, Spacing, Menu, Line } from "@/components";
+import { Logo, GridLine, Cell } from "@/components";
 import { mask, pattern } from "@/styles";
+import { Link } from "@tanstack/react-router";
 
-export function Header({ className, ...props }: HeaderProps) {
+export function Header({ className, children, menu, ...props }: HeaderProps) {
     return (
         <header
             className={cn(
@@ -39,11 +40,35 @@ export function Header({ className, ...props }: HeaderProps) {
                     mask()
                 )}
             ></div>
-            <Spacing className="h-10" />
-            <Menu />
-            <Line>
-                <Logo name="elucidar.io" className={cn("h-12", "self-start")} />
-            </Line>
+            {menu}
+            <GridLine className="gap-0 md:gap-4">
+                <Cell
+                    className={cn(
+                        "col-start-1",
+                        children
+                            ? ["col-span-4", "md:border-r-0"]
+                            : ["col-span-12"]
+                    )}
+                >
+                    <Link to="/">
+                        <Logo name="elucidar.io" className="max-w-100" />
+                    </Link>
+                </Cell>
+                {children && (
+                    <Cell
+                        className={cn(
+                            "col-start-5",
+                            "col-end-13",
+                            "flex",
+                            "items-end",
+                            "md:border-l-0",
+                            "pt-2"
+                        )}
+                    >
+                        {children}
+                    </Cell>
+                )}
+            </GridLine>
         </header>
     );
 }

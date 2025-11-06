@@ -1,49 +1,28 @@
 import { cn } from "@/utils";
 import { MenuItem } from "./MenuItem";
-import { Line } from "../line";
-import type { VariantProps } from "class-variance-authority";
-import type { menuItemVariants } from "./variants";
+import type { MenuProps } from "./types";
+import { Spacing, Line } from "@/components";
 
-const links: ({
-    href: string;
-    label: string;
-} & VariantProps<typeof menuItemVariants>)[] = [
-    {
-        href: "servicos",
-        label: "serviços",
-        color: "pink",
-    },
-    {
-        href: "produtos",
-        label: "produtos",
-        color: "blue",
-    },
-    {
-        href: "contato",
-        label: "contato",
-        color: "gray",
-    },
-];
-
-export function Menu() {
+export function Menu({ links }: MenuProps) {
     return (
-        <Line
-            bottom={false}
-            className={cn("hidden", "md:flex", "justify-end", "px-4")}
-        >
-            <nav>
-                <ul className={cn("flex")}>
+        <>
+            <Spacing />
+            <Line element="nav">
+                <ul
+                    className={cn(
+                        "flex",
+                        "w-full",
+                        "pl-2",
+                        "justify-end-safe",
+                        "md:px-4"
+                    )}
+                >
                     {links.map((link) => (
-                        <MenuItem
-                            key={link.href}
-                            href={link.href}
-                            color={link.color!}
-                        >
-                            {link.label}
-                        </MenuItem>
+                        <MenuItem key={link.label} {...link} />
                     ))}
                 </ul>
-            </nav>
-        </Line>
+            </Line>
+            <Spacing />
+        </>
     );
 }

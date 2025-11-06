@@ -8,7 +8,7 @@ import ElucidarioArt from "./assets/elucidario.art.svg?react";
 
 export function Logo({ name, className, ...props }: LogoProps) {
     return (
-        <motion.div className={cn("flex", "w-260", "m-auto")} {...props}>
+        <motion.div className={cn("flex", className)} {...props}>
             {name === "elucidar.io" ? (
                 <Elucidario
                     className={cn(
@@ -16,8 +16,8 @@ export function Logo({ name, className, ...props }: LogoProps) {
                         "dark:fill-light",
                         "transition-colors",
                         "duration-300",
-                        "w-fit",
-                        className
+                        "w-full",
+                        "h-fit"
                     )}
                 />
             ) : (
@@ -27,8 +27,8 @@ export function Logo({ name, className, ...props }: LogoProps) {
                         "dark:fill-light",
                         "transition-colors",
                         "duration-300",
-                        "w-fit",
-                        className
+                        "w-full",
+                        "h-fit"
                     )}
                 />
             )}

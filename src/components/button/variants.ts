@@ -3,18 +3,23 @@ import { cva } from "class-variance-authority";
 export const buttonVariants = cva(
     [
         "cursor-pointer",
+
         "inline-flex",
         "items-center",
         "justify-center",
+
         "whitespace-nowrap",
-        "font-medium",
+
         "transition-colors",
         "duration-300",
+        "no-underline",
+
         "ring-offset-pink-55",
         "focus-visible:outline-none",
-        "focus-visible:ring-2",
-        "focus-visible:ring-ring",
+        "focus-visible:inset-ring-2",
         "focus-visible:ring-offset-2",
+        "focus-visible:rounded-sm",
+
         "disabled:pointer-events-none",
         "disabled:opacity-50",
     ],
@@ -39,25 +44,15 @@ export const buttonVariants = cva(
                 ],
                 link: [
                     "text-primary",
+
+                    "text-blue-35",
+                    "dark:text-blue-55",
+
+                    "hover:text-blue-45",
+                    "hover:dark:text-blue-55",
+
+                    "hover:underline",
                     "underline-offset-4",
-                    "hover:underline",
-
-                    "text-blue-75",
-                    "dark:text-primary-light",
-
-                    "hover:text-pink-dark",
-                    "hover:dark:text-pink-55",
-
-                    "hover:underline",
-                    "underline-offset-2",
-
-                    "ring-offset-pink-55",
-                    "dark:ring-offset-pink-dark",
-
-                    "focus-visible:outline-none",
-                    "focus-visible:ring-2",
-                    "focus-visible:ring-ring",
-                    "focus-visible:ring-offset-2",
                     "inline-block",
                 ],
                 icon: "h-10 w-10",

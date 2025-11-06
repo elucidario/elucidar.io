@@ -16,9 +16,10 @@ export function Deck({
         <ul
             className={cn(
                 "flex",
-                "flex-col md:flex-row",
+                "flex-col",
                 "gap-4",
                 "p-4",
+                "w-full",
                 uiPattern({ pattern, patternColor, patternLight, patternSize }),
                 className
             )}

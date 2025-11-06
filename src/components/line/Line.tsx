@@ -1,9 +1,10 @@
 import { cn } from "@/utils";
-import { type VariantProps } from "class-variance-authority";
-import { xLineVariants, yLineVariants } from "./variants";
 import type { LineProps } from "./types";
+import { BaseLine } from "./BaseLine";
+import { Cell } from "./Cell";
+import type { HTMLAttributes } from "react";
 
-export function Line({
+export function Line<Attributes extends HTMLAttributes<HTMLElement>>({
     right,
     left,
     top,
@@ -11,35 +12,23 @@ export function Line({
     className,
     children,
     ...props
-}: LineProps &
-    VariantProps<typeof xLineVariants> &
-    VariantProps<typeof yLineVariants>) {
+}: LineProps<Attributes>) {
     return (
-        <div
-            className={cn(
-                xLineVariants({
-                    top,
-                    bottom,
-                })
-            )}
-            {...props}
-        >
-            <div
+        <BaseLine top={top} bottom={bottom} className="px-4" {...props}>
+            <Cell
+                right={right}
+                left={left}
                 className={cn(
                     "line-content",
-                    "w-sm md:w-full lg:w-260",
+                    "w-full lg:w-260",
                     "min-h-fit",
                     "m-auto",
                     "flex",
-                    yLineVariants({
-                        left,
-                        right,
-                    }),
                     className
                 )}
             >
                 {children}
-            </div>
-        </div>
+            </Cell>
+        </BaseLine>
     );
 }
